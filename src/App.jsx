@@ -23,18 +23,17 @@ export const App = () => {
 
     if (inputValue !== "") {
       setListaMostrar(
+      //El filter devuelve true o false,  si es verdadero la palabra se agrega a la lista de mostrar porque ha pasadi por el filtro
+      //si es falso la palabra no se añade.
         listaPalabras.filter((palabra) => {
-          for (let i = 0; i <= inputValue.length; i++) {
-            if (palabra[i].toLowerCase() === inputValue[i]) {
-              if (i == inputValue.length - 1) {
-                return true;
-              }
-            } else {
+            if(palabra.toLowerCase().indexOf(inputValue.toLowerCase())===0){
+              return true;
+            }
+             else {
               return false;
             }
-          }
-        })
-      );
+         }  
+      ));
     } else {
       setListaMostrar(listaPalabras);
     }
